@@ -486,37 +486,33 @@
         </footer>
     </div>
 
-    <script>
-        // Authentication state stored in memory
-        let currentUser = {
-            username: '',
-            isAuthenticated: false
-        };
+   <script>
+  function handleLogin(event) {
+    event.preventDefault();
 
-        // Handle login
-        function handleLogin(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // For demo purposes - accepting any username/password
-            // In production, this would validate against a secure backend
-            if (username && password) {
-                currentUser.username = username;
-                currentUser.isAuthenticated = true;
-                
-                // Hide login screen and show main content
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('mainContent').classList.add('active');
-                document.getElementById('displayUsername').textContent = username;
-                
-                // Hide error message if shown
-                document.getElementById('errorMessage').classList.remove('show');
-            } else {
-                // Show error message
-                document.getElementById('errorMessage').classList.add('show');
-            }
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username && password) {
+      // Save login session
+      localStorage.setItem('loggedInUser', username);
+
+      // Redirect to landing page
+      window.location.href = 'index.html';
+    } else {
+      document.getElementById('errorMessage').classList.add('show');
+    }
+  }
+
+  // If user already logged in, skip login page
+  window.addEventListener('DOMContentLoaded', () => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      window.location.href = 'index.html';
+    }
+  });
+</script>
+
         }
 
         // Handle logout
