@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerfleet Platform Hub | Teletrac Fleets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .platform-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #2a5298, #7e22ce);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .platform-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #2a5298, #7e22ce);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .platform-card h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .platform-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-btn {
+            background: linear-gradient(135deg, #2a5298, #7e22ce);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .platform-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(126, 34, 206, 0.4);
+        }
+
+        .quick-links {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .quick-links h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-link {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.8;
+            margin-top: 3rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">⚡ TELETRAC SOLUTIONS</div>
+            <div class="tagline">Integrated Fleet Management Solutions</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Welcome to Your Platform Hub</h1>
+            <p>Access all your Teletrac Services from one convenient location. Select the platform you need below.</p>
+        </section>
+
+        <div class="platforms-grid">
+            <div class="platform-card" onclick="window.open('https://teletrac.za.mixtelematics.com/', '_blank')">
+                <div class="platform-icon">🚗</div>
+                <h3>MiX Dynamix Platform</h3>
+                <p>Comprehensive fleet management and telematics solution. Real-time vehicle tracking, driver behavior, and performance analytics.</p>
+                <a href="https://teletrac.za.mixtelematics.com/" target="_blank" class="platform-btn">Launch Platform</a>
+            </div>
+
+            <div class="platform-card" onclick="window.open('https://eur-ftcloud.ifleetvision.com/ftv/ft/dashboard', '_blank')">
+                <div class="platform-icon">📹</div>
+                <h3>Video Telematics Platform</h3>
+                <p>FT Cloud video telematics system. Monitor driver safety with AI-powered dashcam footage and real-time incident alerts.</p>
+                <a href="https://eur-ftcloud.ifleetvision.com/ftv/ft/dashboard" target="_blank" class="platform-btn">Launch Platform</a>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-icon">🎥</div>
+                <h3>LocoNav Platform</h3>
+                <p>Advanced video telematics and fleet visibility solution. Enhance safety and reduce risk with intelligent video monitoring.</p>
+                <button class="platform-btn" onclick="alert('Please contact support for LocoNav platform access')">Launch Platform</button>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-icon">⛽</div>
+                <h3>Fuel Management Platform</h3>
+                <p>Monitor and optimize fuel consumption across your fleet. Track fuel usage, prevent theft, and reduce operational costs.</p>
+                <button class="platform-btn" onclick="alert('Please contact support for Fuel Management access')">Launch Platform</button>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-icon">📊</div>
+                <h3>Analytics Dashboard</h3>
+                <p>Advanced reporting and analytics for data-driven decisions. Track KPIs and performance metrics in real-time.</p>
+                <button class="platform-btn" onclick="alert('Please contact support for Analytics Dashboard access')">Launch Platform</button>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-icon">⚙️</div>
+                <h3>Admin Console</h3>
+                <p>User management and system configuration. Control access, permissions, and organizational settings.</p>
+                <button class="platform-btn" onclick="alert('Please contact support for Admin Console access')">Launch Platform</button>
+            </div>
+        </div>
+
+        <section class="quick-links">
+            <h2>Quick Links</h2>
+            <div class="links-grid">
+                <a href="#" class="quick-link" onclick="alert('Support portal coming soon'); return false;">📞 Support</a>
+                <a href="#" class="quick-link" onclick="alert('Documentation portal coming soon'); return false;">📚 Documentation</a>
+                <a href="#" class="quick-link" onclick="alert('Training resources coming soon'); return false;">🎓 Training</a>
+                <a href="#" class="quick-link" onclick="alert('API documentation coming soon'); return false;">🔌 API Access</a>
+                <a href="#" class="quick-link" onclick="alert('Billing portal coming soon'); return false;">💳 Billing</a>
+                <a href="#" class="quick-link" onclick="alert('Contact form coming soon'); return false;">✉️ Contact Us</a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Teletrac Solutions. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Unified Fleet Management Solutions</p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add entrance animations on scroll
+        const cards = document.querySelectorAll('.platform-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-in';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
