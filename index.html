@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-  // Redirect to login if not logged in
-  const loggedInUser = localStorage.getItem('loggedInUser');
-  if (!loggedInUser) {
-    window.location.href = 'login.html';
-  }
-</script>
-    <button onclick="handleLogout()" style="background: rgba(255,255,255,0.2); border:none; color:#fff; padding:0.5rem 1rem; border-radius:8px; cursor:pointer;">
-  Logout
-</button>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -329,12 +319,7 @@
 
         cards.forEach(card => observer.observe(card));
     </script>
-    <script>
-  function handleLogout() {
-    localStorage.removeItem('loggedInUser');
-    window.location.href = 'login.html';
-  }
-</script>
+
 
 </body>
 </html>
